@@ -1,0 +1,22 @@
+name: 'Bash Action - composite'
+description: 'A Bash Action template using composite.'
+
+inputs:
+  name:
+    description: 'Name of thing'
+    required: false
+    default: 'World'
+
+outputs:
+  time:
+    description: 'Current time'
+    value: ${{ steps.composite.outputs.time }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: composite
+      run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
+      env:
+        INPUT_NAME: ${{ inputs.name }}
