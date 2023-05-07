@@ -16,7 +16,7 @@ runs:
   using: 'composite'
   steps:
     - id: composite
-      run: $GITHUB_ACTION_PATH/entrypoint.sh
+      run: bash ./entrypoint.sh
       shell: bash
       env:
         INPUT_NAME: ${{ inputs.name }}
